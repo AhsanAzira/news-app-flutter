@@ -1,4 +1,4 @@
-# tugas berita
+# berita
 
 A new Flutter project.
 
