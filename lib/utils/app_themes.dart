@@ -3,16 +3,13 @@ import 'app_colors.dart';
 
 /// Kelas untuk mendefinisikan data tema Light dan Dark
 class AppThemes {
-  //
-  // --- TEMA TERANG (LIGHT) ---
-  //
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primarySwatch: Colors.blue,
     primaryColor: AppColors.primary,
     scaffoldBackgroundColor: AppColors.background,
     appBarTheme: const AppBarTheme(
-      foregroundColor: Colors.white, // Warna ikon dan teks di AppBar
+      foregroundColor: Colors.white,
       backgroundColor: AppColors.primary,
     ),
     colorScheme: ColorScheme.fromSeed(
@@ -43,16 +40,13 @@ class AppThemes {
       ),
     ),
     iconTheme: const IconThemeData(color: AppColors.textSecondary),
-    // [PERBAIKAN] Menambahkan ChipTheme untuk light mode
     chipTheme: ChipThemeData(
       backgroundColor: AppColors.background,
       selectedColor: AppColors.primary,
-      // Style untuk teks saat TIDAK DIPILIH
       labelStyle: const TextStyle(
         color: AppColors.textPrimary,
         fontWeight: FontWeight.w500,
       ),
-      // Style untuk teks saat DIPILIH
       secondaryLabelStyle: const TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.w500,
@@ -60,9 +54,6 @@ class AppThemes {
     ),
   );
 
-  //
-  // --- TEMA GELAP (DARK) ---
-  //
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primarySwatch: Colors.blue,
@@ -100,16 +91,13 @@ class AppThemes {
       ),
     ),
     iconTheme: const IconThemeData(color: AppColors.textSecondaryDark),
-    // [PERBAIKAN] Memastikan style dark mode sudah benar
     chipTheme: ChipThemeData(
-      backgroundColor: AppColors.surfaceDark, // Latar chip tidak dipilih
+      backgroundColor: AppColors.surfaceDark,
       selectedColor: AppColors.primary,
-      // Style untuk teks saat TIDAK DIPILIH
       labelStyle: const TextStyle(
         color: AppColors.textPrimaryDark,
         fontWeight: FontWeight.w500,
       ),
-      // Style untuk teks saat DIPILIH
       secondaryLabelStyle: const TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.w500,

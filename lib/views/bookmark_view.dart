@@ -15,12 +15,10 @@ class BookmarkView extends GetView<BookmarkController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Bookmarks'),
-        // [PERBAIKAN] Hapus backgroundColor agar mengambil dari Tema
         // backgroundColor: AppColors.primary,
       ),
       body: Obx(() {
         if (controller.bookmarks.isEmpty) {
-          // [PERBAIKAN] Gunakan style dari Tema
           return Center(
             child: Text(
               'Anda belum memiliki bookmark',
@@ -41,14 +39,12 @@ class BookmarkView extends GetView<BookmarkController> {
                 controller.removeBookmark(article);
               },
               background: Container(
-                // [PERBAIKAN] Gunakan warna dari Tema
                 color: Theme.of(context).colorScheme.error,
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 margin: const EdgeInsets.symmetric(vertical: 8),
                 alignment: Alignment.centerRight,
                 child: Icon(
                   Icons.delete,
-                  // [PERBAIKAN] Gunakan warna dari Tema
                   color: Theme.of(context).colorScheme.onError,
                 ),
               ),
@@ -63,9 +59,6 @@ class BookmarkView extends GetView<BookmarkController> {
   Widget _buildBookmarkCard(ArticleModel article, BuildContext context) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8),
-      // [PERBAIKAN] Hapus properti yang sudah diatur di CardTheme
-      // elevation: 2,
-      // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         onTap: () {
           Get.toNamed(AppRoutes.detail, arguments: article);
@@ -84,7 +77,6 @@ class BookmarkView extends GetView<BookmarkController> {
                   height: 180,
                   width: double.infinity,
                   fit: BoxFit.cover,
-                  // [TAMBAHAN] Placeholder dan Error
                   placeholder: (context, url) => Container(
                     height: 180,
                     color: Theme.of(context).colorScheme.surface,
@@ -108,7 +100,6 @@ class BookmarkView extends GetView<BookmarkController> {
                 children: [
                   Text(
                     article.title,
-                    // [PERBAIKAN] Gunakan style dari Tema
                     style: Theme.of(context).textTheme.titleMedium,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -116,7 +107,6 @@ class BookmarkView extends GetView<BookmarkController> {
                   const SizedBox(height: 12),
                   Text(
                     DateFormatter.formatDate(article.publishedAt),
-                    // [PERBAIKAN] Gunakan style dari Tema
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],

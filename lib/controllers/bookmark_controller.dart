@@ -1,4 +1,4 @@
-import 'package:flutter/services.dart'; // [TAMBAHAN] Import Haptic Feedback
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../models/article_model.dart';
 import '../services/bookmark_service.dart';
@@ -22,7 +22,6 @@ class BookmarkController extends GetxController {
 
   /// Menghapus bookmark
   Future<void> removeBookmark(ArticleModel article) async {
-    // [TAMBAHAN] Getaran sedang untuk aksi 'hapus'
     HapticFeedback.mediumImpact();
 
     await _bookmarkService.removeBookmark(article);

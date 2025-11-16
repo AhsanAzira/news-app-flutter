@@ -19,9 +19,7 @@ class DetailView extends GetView<DetailController> {
           SliverAppBar(
             expandedHeight: 300,
             pinned: true,
-            // [PERBAIKAN] Gunakan warna dari Tema
             backgroundColor: Theme.of(context).colorScheme.surface,
-            // [PERBAIKAN] Atur warna ikon AppBar (back, dsb)
             iconTheme: IconThemeData(
               color: Theme.of(context).colorScheme.onSurface,
             ),
@@ -31,28 +29,23 @@ class DetailView extends GetView<DetailController> {
                       imageUrl: controller.article.urlToImage!,
                       fit: BoxFit.cover,
                       placeholder: (context, url) => Container(
-                        // [PERBAIKAN] Gunakan warna dari Tema
                         color: Theme.of(context).colorScheme.surface,
                         child: const Center(child: CircularProgressIndicator()),
                       ),
                       errorWidget: (context, url, error) => Container(
-                        // [PERBAIKAN] Gunakan warna dari Tema
                         color: Theme.of(context).colorScheme.surface,
                         child: Icon(
                           Icons.image_not_supported,
                           size: 50,
-                          // [PERBAIKAN] Gunakan warna dari Tema
                           color: Theme.of(context).iconTheme.color,
                         ),
                       ),
                     )
                   : Container(
-                      // [PERBAIKAN] Gunakan warna dari Tema
                       color: Theme.of(context).colorScheme.surface,
                       child: Icon(
                         Icons.article,
                         size: 100,
-                        // [PERBAIKAN] Gunakan warna dari Tema
                         color: Theme.of(context).iconTheme.color,
                       ),
                     ),
@@ -69,7 +62,6 @@ class DetailView extends GetView<DetailController> {
                   // Title
                   Text(
                     controller.article.title,
-                    // [PERBAIKAN] Gunakan style dari Tema
                     style: Theme.of(
                       context,
                     ).textTheme.titleLarge?.copyWith(height: 1.3),
@@ -83,14 +75,12 @@ class DetailView extends GetView<DetailController> {
                         Icon(
                           Icons.person,
                           size: 18,
-                          // [PERBAIKAN] Gunakan warna dari Tema
                           color: Theme.of(context).textTheme.bodyMedium?.color,
                         ),
                         const SizedBox(width: 6),
                         Expanded(
                           child: Text(
                             controller.article.author!,
-                            // [PERBAIKAN] Gunakan style dari Tema
                             style: Theme.of(context).textTheme.bodyMedium,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -106,7 +96,6 @@ class DetailView extends GetView<DetailController> {
                       Icon(
                         Icons.access_time,
                         size: 18,
-                        // [PERBAIKAN] Gunakan warna dari Tema
                         color: Theme.of(context).textTheme.bodyMedium?.color,
                       ),
                       const SizedBox(width: 6),
@@ -114,7 +103,6 @@ class DetailView extends GetView<DetailController> {
                         DateFormatter.formatFullDate(
                           controller.article.publishedAt,
                         ),
-                        // [PERBAIKAN] Gunakan style dari Tema
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
@@ -128,7 +116,6 @@ class DetailView extends GetView<DetailController> {
                   if (controller.article.description != null) ...[
                     Text(
                       controller.article.description!,
-                      // [PERBAIKAN] Gunakan style dari Tema
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontSize: 18,
                         height: 1.5,
@@ -141,7 +128,6 @@ class DetailView extends GetView<DetailController> {
                   if (controller.article.content != null) ...[
                     Text(
                       controller.article.content!,
-                      // [PERBAIKAN] Gunakan style dari Tema
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontSize: 16,
                         height: 1.6,
@@ -159,7 +145,6 @@ class DetailView extends GetView<DetailController> {
                         Icon(
                           Icons.link,
                           size: 18,
-                          // [PERBAIKAN] Gunakan warna dari Tema
                           color: Theme.of(context).colorScheme.primary,
                         ),
                         const SizedBox(width: 8),
@@ -168,7 +153,6 @@ class DetailView extends GetView<DetailController> {
                             'Sumber: ${controller.article.url}',
                             style: TextStyle(
                               fontSize: 14,
-                              // [PERBAIKAN] Gunakan warna dari Tema
                               color: Theme.of(context).colorScheme.primary,
                               decoration: TextDecoration.underline,
                             ),
@@ -187,14 +171,14 @@ class DetailView extends GetView<DetailController> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       _buildActionButton(
-                        context: context, // [PERBAIKAN] Kirim context
+                        context: context,
                         icon: Icons.share,
                         label: 'Share',
                         onTap: controller.shareArticle,
                       ),
                       Obx(
                         () => _buildActionButton(
-                          context: context, // [PERBAIKAN] Kirim context
+                          context: context,
                           icon: controller.isBookmarked.value
                               ? Icons.bookmark
                               : Icons.bookmark_border,
@@ -220,7 +204,7 @@ class DetailView extends GetView<DetailController> {
 
   /// Widget untuk action button
   Widget _buildActionButton({
-    required BuildContext context, // [PERBAIKAN] Terima context
+    required BuildContext context,
     required IconData icon,
     required String label,
     required VoidCallback onTap,
@@ -231,20 +215,17 @@ class DetailView extends GetView<DetailController> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         decoration: BoxDecoration(
-          // [PERBAIKAN] Gunakan warna dari Tema
           border: Border.all(color: Theme.of(context).colorScheme.primary),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // [PERBAIKAN] Gunakan warna dari Tema
             Icon(icon, color: Theme.of(context).colorScheme.primary),
             const SizedBox(width: 8),
             Text(
               label,
               style: TextStyle(
-                // [PERBAIKAN] Gunakan warna dari Tema
                 color: Theme.of(context).colorScheme.primary,
                 fontWeight: FontWeight.w600,
               ),

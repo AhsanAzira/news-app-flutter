@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../controllers/home_controller.dart';
-import '../controllers/theme_controller.dart'; // Import ThemeController
-import '../utils/app_colors.dart'; // Dibutuhkan untuk AppColors.error
+import '../controllers/theme_controller.dart';
+import '../utils/app_colors.dart';
 import '../utils/date_formatter.dart';
 import '../routes/app_routes.dart';
 
@@ -56,10 +56,6 @@ class HomeView extends GetView<HomeController> {
           // News list
           Expanded(
             child: Obx(() {
-              // [PERBAIKAN] Kita tidak perlu lagi mendengarkan tema
-              // atau menggunakan ValueKey di sini, karena controller
-              // akan me-refresh 'articles' untuk kita.
-
               // Menampilkan loading indicator
               if (controller.isLoading.value) {
                 return const Center(child: CircularProgressIndicator());
@@ -99,7 +95,6 @@ class HomeView extends GetView<HomeController> {
 
               // Menampilkan list berita
               return RefreshIndicator(
-                // [PERBAIKAN] Key sudah tidak diperlukan lagi.
                 onRefresh: controller.refreshNews,
                 child: ListView.builder(
                   itemCount: controller.articles.length,

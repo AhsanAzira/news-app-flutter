@@ -1,4 +1,4 @@
-import 'package:flutter/services.dart'; // [TAMBAHAN] Import Haptic Feedback
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../models/article_model.dart';
 import '../services/bookmark_service.dart';
@@ -28,11 +28,9 @@ class DetailController extends GetxController {
 
   /// Fungsi untuk toggle bookmark
   Future<void> toggleBookmark() async {
-    // [TAMBAHAN] Memberikan feedback getaran
     HapticFeedback.lightImpact();
 
     if (isBookmarked.value) {
-      // Jika sudah, hapus
       await _bookmarkService.removeBookmark(article);
       isBookmarked.value = false;
       Get.snackbar(
@@ -53,7 +51,6 @@ class DetailController extends GetxController {
   }
 
   void shareArticle() {
-    // [TAMBAHAN] Memberikan feedback getaran
     HapticFeedback.lightImpact();
 
     Get.snackbar(

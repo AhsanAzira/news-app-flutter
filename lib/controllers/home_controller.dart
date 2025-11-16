@@ -35,19 +35,8 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Fetch news saat controller pertama kali dibuat
     fetchNews();
-
-    // [PERBAIKAN TERBAIK]
-    // Daftarkan 'listener' untuk mendengarkan perubahan tema.
-    // Kita gunakan 'ever' dari GetX untuk ini.
-    // 'ever' akan menjalankan callback setiap kali 'themeMode' berubah.
     ever(Get.find<ThemeController>().themeMode, (_) {
-      // Saat tema berubah (misalnya dari light ke dark),
-      // panggil 'articles.refresh()'.
-      // Ini akan memaksa widget Obx() di HomeView untuk
-      // membangun ulang dirinya sendiri, yang akan
-      // membangun ulang ListView dengan tema yang benar.
       articles.refresh();
     });
   }
